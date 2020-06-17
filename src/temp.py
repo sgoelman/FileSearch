@@ -21,6 +21,7 @@ def get_creation_date(path_to_file):
         try:
             return stat.st_birthtime
         except AttributeError:
+            # Linux OS
             return stat.st_mtime
 
 
