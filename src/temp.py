@@ -16,7 +16,7 @@ def search_for_file_with_ending(contains_a, contains_b):
 def get_creation_date(path_to_file,file):
     file_dict={}
     if platform.system() == 'Windows':
-        file_dict={path_to_file:}
+        # file_dict={path_to_file:}
         return os.path.getctime(path_to_file)
     else:
         stat = os.stat(path_to_file)
