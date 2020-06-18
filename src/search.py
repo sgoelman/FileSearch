@@ -11,25 +11,26 @@ class Search:
         result = []
         for type,value in patterns:
             for root, dirs, files in os.walk(path):
-                for name in files:
+                for f_name,d_name in files,dirs:
                     if type.__contains__('file_'):
-                        if fnmatch.fnmatch(name, patterns.items()):
-                            result.append(os.path.join(root, name))
-                for name in dirs:
+                        if fnmatch.fnmatch(f_name, value):
+                            result.append(os.path.join(root, f_name))
                     if value.__contains__('dir_'):
-                        if fnmatch.fnmatch(name, patterns.keys()):
-                            result.append(os.path.join(root, name))
+                        if fnmatch.fnmatch(d_name, value):
+                            result.append(os.path.join(root, d_name))
         return result
 
     def find_all(self, path, file_a, file_b, dir_a, dir_b):
         result = []
         for root, dirs, files in os.walk(path):
-            for name in files:
-                if files.__contains__(file_a) or files.__contains__(file_b):
-                    result.append(os.path.join(root, name))
-            for dir in dirs:
-                if dirs == dir_a or dirs == dir_b:
-                    result.append(os.path.join(root, dir))
+            for f_name in files:
+                if f_name.__contains__(file_a) or f_name.__contains__(file_b):
+                    file_path = root + '\\' + str(f_name)
+                    result.append(file_path)
+            for d_name in dirs:
+                if d_name == dir_a or d_name == dir_b:
+                    dir_path = root + '\\' + str(d_name)
+                    result.append(dir_path)
         return result
 
     def search_for_file_with_ending(self, path,file_a, file_b, dir_a, dir_b):
@@ -91,4 +92,4 @@ class Search:
 
 search_in_OS = Search()
 print('Find All'+str(search_in_OS.find_all(path='C:\\', file_a='XT.ec', file_b='AcGenral', dir_a='CSC', dir_b='ERRORREP')))
-print('Find: '+str(search_in_OS.find(path='C:\\', file_a='XT.ec', file_b='AcGenral', dir_a='CSC', dir_b='ERRORREP')))
+# print('Find: '+str(search_in_OS.find(path='C:\\', file_a='XT.ec', file_b='AcGenral', dir_a='CSC', dir_b='ERRORREP')))
