@@ -62,9 +62,9 @@ class Search:
             except AttributeError as ae:
                 # Linux OS
                 print(ae)
-        for ts in file_time_list:
-            if isinstance(ts, float):
-                yield self.get_date(ts)
+        for time in file_time_list:
+            if isinstance(time, float):
+                yield self.get_date(time)
 
     def get_date(self, time_stamp):
         value = datetime.datetime.fromtimestamp(time_stamp)
