@@ -6,7 +6,7 @@ def main(file_a, file_b, dir_a, dir_b, path='C:\\'):
     all_file_list = []
     try:
         all_paths = (
-            search_in_OS.find_all(path, file_a=file_a, file_b=file_b, dir_a=dir_a, dir_b=dir_b))
+            search_in_OS.search_by_criteria(path, file_a=file_a, file_b=file_b, dir_a=dir_a, dir_b=dir_b))
         for path in all_paths:
             creation, modified, accessed = search_in_OS.get_time_list(path)
             all_file_list.append([path, search_in_OS.get_file_name(path), creation, modified, accessed])

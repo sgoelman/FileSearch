@@ -7,7 +7,7 @@ import os, fnmatch
 
 class Search:
 
-    def find_all(self, path, file_a, file_b, dir_a, dir_b):
+    def search_by_criteria(self, path, file_a, file_b, dir_a, dir_b):
         result = []
         for root, dirs, files in os.walk(path):
             for f_name in files:
